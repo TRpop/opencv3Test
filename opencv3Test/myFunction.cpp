@@ -109,7 +109,6 @@ private:
 	Mat mag, ang;
 	//Mat input, output;
 	int width, height;
-	stack< pair<int, int> > st;
 };
 
 inline void CannyEdge::gaussianBlur(Mat input) {
@@ -221,10 +220,10 @@ void CannyEdge::canny(Mat input, Mat output, int tHigh, int tLow) {
 		for (int i = 1; i < width - 1; i++) {
 			if (pCand[i] != 0 && pOut[i] != 255) {
 				if (pMag[i] > tHigh) {
-					//pOut[i] = 255;
-					this->st.push( (pair<int, int>)make_pair(i, j) );
+					pOut[i] = 255;
+					//this->st.push( (pair<int, int>)make_pair(i, j) );
 				}
-				/*
+				
 				else if (pMag[i] > tLow) {
 					switch (pAng[i]) {
 					case 0:
@@ -245,7 +244,9 @@ void CannyEdge::canny(Mat input, Mat output, int tHigh, int tLow) {
 							pOut[i] = 255;
 						break;
 					}
-				}*/
+				}
+
+				/*
 
 				while(!(this->st.empty())) {
 					//if ((this->st.empty())) break;
@@ -305,6 +306,8 @@ void CannyEdge::canny(Mat input, Mat output, int tHigh, int tLow) {
 					}
 
 				}
+
+				*/
 			}
 		}
 	}
