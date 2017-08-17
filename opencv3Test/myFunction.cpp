@@ -326,6 +326,32 @@ public :
 	//void dilate(Mat input, Mat output, Mat mask);
 	//void erode(Mat input, Mat output, Mat mask);
 
+	int thresholdToMean(Mat input){
+		int height = input.cols;
+		int width = input.rows;
+		int sum = 0;
+
+		for(int j = 0; j < height; j += 2){
+
+			uchar* pCurr = input.ptr<uchar>(j);
+
+			for(int i = 0; i < width; i += 2){
+				sum += pCurr[i];
+			}
+		}
+
+		return (sum/((height/2)*(width/2)));
+	}
+
+	void func(Mat input, Mat output, int division_width, int division_height){
+		//int num = division_height*division_width;
+		for(int j = 0; j < division_height; j++){
+			for(int i = 0; i < division_width; i++){
+				Mat piece = input(Rect())
+			}
+		}
+	}
+
 private :
 	int mask[100];
 	int dimension;
